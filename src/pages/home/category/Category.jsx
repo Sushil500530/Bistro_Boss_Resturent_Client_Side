@@ -2,18 +2,24 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
-import slide1 from '../../assets/home/slide1.jpg'
-import slide2 from '../../assets/home/slide2.jpg'
-import slide3 from '../../assets/home/slide3.jpg'
-import slide4 from '../../assets/home/slide4.jpg'
-import slide5 from '../../assets/home/slide5.jpg'
+import slide1 from '../../../assets/home/slide1.jpg'
+import slide2 from '../../../assets/home/slide2.jpg'
+import slide3 from '../../../assets/home/slide3.jpg'
+import slide4 from '../../../assets/home/slide4.jpg'
+import slide5 from '../../../assets/home/slide5.jpg'
+import SectionTitle from './SectionTitle';
 const Category = () => {
     return (
         <>
-            <div className='text-center my-8'>
+            <div>
+                <SectionTitle
+                subHeading={'From 11:00am to 10:00pm'}
+                heading={'ORDER ONLINE'}
+                ></SectionTitle>
+                {/* <p className='text-xl font-medium  mb-5 text-[#D99904]'>---From 11:00am to 10:00pm---</p>
                 <hr className='w-1/2 border-2 mx-auto border-gray-300' />
                 <h1 className='text-[40px] font-bold py-2'>ORDER ONLINE</h1>
-                <hr className='w-1/2 border-2 mx-auto border-gray-300' />
+                <hr className='w-1/2 border-2 mx-auto border-gray-300' /> */}
             </div>
             <Swiper
                 slidesPerView={4}
