@@ -6,11 +6,15 @@ import TestyMonials from "./testyMonials/TestyMonials";
 import CallUs from "./CallUs";
 import Recuirments from "./cheef recuments/Recuirments";
 import BestroBoss from "./bistro-boss/BistroBoss";
+import { Helmet } from "react-helmet-async";
 
 
 const Home = () => {
     return (
         <div>
+              <Helmet>
+                <title>Bistro Boss | Home</title>
+            </Helmet>
             <Banner></Banner>
             <Category></Category>
             <BestroBoss></BestroBoss>

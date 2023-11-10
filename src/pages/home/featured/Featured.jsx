@@ -8,9 +8,9 @@ const Featured = () => {
                 subHeading={'check it out '}
                 heading={'Featured item'}
             ></SectionTitle>
-            <div className="md:flex md:items-center md:justify-center gap-8 py-20 px-28 bg-slate-600 bg-opacity-50 ">
+            <div className="md:flex md:items-center md:justify-center gap-8 lg:py-20 lg:px-28 bg-slate-600 bg-opacity-50 px-8 py-16">
                 <div>
-                    <img src={featured} alt="" />
+                    <img src={featured} alt="" className="rounded-md" />
                 </div>
                 <div>
                     <h3 className="text-2xl font-bold">March 20, 2023 <br /> WHERE CAN I GET SOME?</h3>

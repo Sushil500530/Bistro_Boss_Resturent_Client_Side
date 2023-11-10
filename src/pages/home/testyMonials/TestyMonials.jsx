@@ -16,7 +16,7 @@ const TestyMonials = () => {
     }, [])
     console.log(reviews);
     return (
-        <section className="my-20 px-28">
+        <section className="my-20 lg:px-28 px-10">
             <SectionTitle
                 subHeading={'What Our Clients Say'}
                 heading={'TESTIMONIALS'}
