@@ -1,6 +1,6 @@
 import SectionTitle from "../category/SectionTitle";
-import MenuItem from "../../shared/MenuItem";
 import useMenu from "../../../hooks/useMenu";
+import MenuCategory from "../../menu/manu-Category/MenuCategory";
 
 const PopularMenu = () => {
     const [menu] = useMenu();
@@ -21,7 +21,7 @@ const PopularMenu = () => {
                 heading={'From Our Menu'}
                 subHeading={'Popular Menu'}
             ></SectionTitle>
-           
+            <MenuCategory items={popular} ></MenuCategory>
             <div className="w-full flex items-center justify-center mb-12">
                 <button className=" btn btn-outline  hover:text-yellow-300 border-0 border-b-4 border-black">View Full  Menu</button>
             </div>

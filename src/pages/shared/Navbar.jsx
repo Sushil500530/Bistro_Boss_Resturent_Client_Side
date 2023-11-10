@@ -22,9 +22,9 @@ const Navbar = () => {
             'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-white font-bold'}>
             Our Shop
         </NavLink>
-        <NavLink to='/cart' className={({ isActive }) => isActive ? 'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-[#EEFF25] font-bold' :
+        <NavLink to='/order' className={({ isActive }) => isActive ? 'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-[#EEFF25] font-bold' :
             'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-white font-bold'}>
-            cart icon
+           Order Food
         </NavLink>
         <NavLink to='/sign-out' className={({ isActive }) => isActive ? 'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-[#EEFF25] font-bold' :
             'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-white font-bold'}>
