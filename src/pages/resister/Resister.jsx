@@ -1,13 +1,14 @@
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import image from '../../assets/others/authentication.gif'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
 
 const Resister = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createUser,updateUserProfile} = useContext(AuthContext);
+    const navigate = useNavigate()
 
     const { register, handleSubmit,
 
@@ -18,9 +19,15 @@ const Resister = () => {
         console.log(data);
              createUser(data.email, data.password)
         .then(result => {
+            updateUserProfile(data?.name, data?.photoURL)
+            .then(() => {
+                console.log('user profile updated')
+        
+            })
+            .catch(err => console.log(err))
            if(result.user){
           toast.success("Resister Successfully...!")
-          return "/login"
+          return navigate('/')
            }
         })
         .then(error => {
@@ -77,14 +84,13 @@ const Resister = () => {
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
                             </div>
-                            {/* <div className="form-control">
-                            <label className="label">
-                                <LoadCanvasTemplate />
-                            </label>
-                            <input type="text"
-                                name="captcha" ref={captchaRef} placeholder="Type the Captch above" className="input input-bordered" required />
-                            <button onClick={handleValidateCaptch} className='btn btn-outline btn-xs mt-3'>Validate</button>
-                        </div> */}
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Photo URL</span>
+                                </label>
+                                <input type="text"  {...register("photoURL", { required: true })}placeholder="Your Photo URL" className="input input-bordered" />
+                                {errors.photoURL && <span className="text-red-500">photoURL is required</span>}
+                            </div>
                             <div className="form-control mt-6">
                                 <input className="btn btn-success text-[18px] capitalize " type="submit" value="Reister" />
                             </div>
