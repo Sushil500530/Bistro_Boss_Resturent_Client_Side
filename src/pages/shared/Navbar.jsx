@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import profile from '../../assets/others/profile.png'
 import Swal from "sweetalert2";
@@ -45,9 +45,9 @@ const Navbar = () => {
             'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-white font-bold'}>
             Our Menu
         </NavLink>
-        <NavLink to='/our-shop' className={({ isActive }) => isActive ? 'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-[#EEFF25] font-bold' :
+        <NavLink to='/secret' className={({ isActive }) => isActive ? 'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-[#EEFF25] font-bold' :
             'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-white font-bold'}>
-            Our Shop
+            Secret
         </NavLink>
         <NavLink to='/order/salad' className={({ isActive }) => isActive ? 'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-[#EEFF25] font-bold' :
             'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-white font-bold'}>
