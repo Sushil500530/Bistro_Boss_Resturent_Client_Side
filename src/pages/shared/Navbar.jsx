@@ -22,13 +22,13 @@ const Navbar = () => {
             'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-white font-bold'}>
             Our Shop
         </NavLink>
-        <NavLink to='/order' className={({ isActive }) => isActive ? 'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-[#EEFF25] font-bold' :
+        <NavLink to='/order/salad' className={({ isActive }) => isActive ? 'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-[#EEFF25] font-bold' :
             'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-white font-bold'}>
            Order Food
         </NavLink>
-        <NavLink to='/sign-out' className={({ isActive }) => isActive ? 'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-[#EEFF25] font-bold' :
+        <NavLink to='/login' className={({ isActive }) => isActive ? 'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-[#EEFF25] font-bold' :
             'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-white font-bold'}>
-           SIGN OUT
+          Login
         </NavLink>
     </>
     return (
