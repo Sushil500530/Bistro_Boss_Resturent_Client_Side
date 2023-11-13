@@ -4,8 +4,11 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { BsFillCartCheckFill } from 'react-icons/bs';
 import profile from '../../assets/others/profile.png'
 import Swal from "sweetalert2";
+import useCarts from "../../hooks/useCarts";
 
 const Navbar = () => {
+    const [carts] = useCarts();
+   
     const { user, logoutUser } = useContext(AuthContext);
 
     const handleLogout = () => {
@@ -54,7 +57,7 @@ const Navbar = () => {
             'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-white font-bold'}>
             <button className="btn bg-transparent border-none hover:bg-transparent font-bold text-3xl text-white">
             <BsFillCartCheckFill></BsFillCartCheckFill>
-                <div className="badge badge-secondary -mt-12 font-medium -ml-8 text-[18px]">+0</div>
+                <div className="badge badge-secondary -mt-12 font-medium -ml-8 text-[18px]">+{`${carts.length}`}</div>
             </button>
         </NavLink>
         <NavLink to='/order/salad' className={({ isActive }) => isActive ? 'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-[#EEFF25] font-bold' :

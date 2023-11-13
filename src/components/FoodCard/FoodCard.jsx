@@ -3,17 +3,22 @@
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useCarts from "../../hooks/useCarts";
+
 
 const FoodCard = ({ item }) => {
     const { name, recipe, image, price, _id} = item || {};
     const { user } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
+    const axiosSecure = useAxiosSecure();
+    const [, refetch] = useCarts();
 
-    const handleAddToCart = (food) => {
+    const handleAddToCart = () => {
         if (user && user.email) {
-            // ToTo alern dite pari 
+            // send cart item to the database 
+
             const cartItem = {
                 menuId : _id,
                 email:user.email,
@@ -21,8 +26,9 @@ const FoodCard = ({ item }) => {
                 image,
                 price
             }
-            axios.post("http://localhost:5000/carts", cartItem)
+            axiosSecure.post("/carts", cartItem)
             .then(res => {
+                console.log(res.data);
                 if(res.data.insertedId){
                     Swal.fire({
                         title: `${name} Added to Your Cart...!`,
@@ -30,6 +36,8 @@ const FoodCard = ({ item }) => {
                         icon: "success",
                         timer:1500
                       });
+                    //   refetch the cart to update items count 
+                    refetch();
                 }
             })
             
@@ -62,7 +70,7 @@ const FoodCard = ({ item }) => {
                 <h2 className="card-title">{name}</h2>
                 <p>{recipe}</p>
                 <div className="card-actions">
-                    <button onClick={() => handleAddToCart(item)} className=" btn btn-outline  hover:text-yellow-300 border-0 text-[#BB8506] border-b-4 border-[#BB8506]">Add to Cart</button>
+                    <button onClick={handleAddToCart} className=" btn btn-outline  hover:text-yellow-300 border-0 text-[#BB8506] border-b-4 border-[#BB8506]">Add to Cart</button>
                 </div>
             </div>
         </div>
