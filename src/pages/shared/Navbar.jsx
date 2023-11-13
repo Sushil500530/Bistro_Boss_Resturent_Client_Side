@@ -1,34 +1,35 @@
 import { useContext } from "react";
 import { NavLink, } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import { BsFillCartCheckFill } from 'react-icons/bs';
 import profile from '../../assets/others/profile.png'
 import Swal from "sweetalert2";
 
 const Navbar = () => {
-    const {user,logoutUser} = useContext(AuthContext);
+    const { user, logoutUser } = useContext(AuthContext);
 
     const handleLogout = () => {
         logoutUser()
-        .then(() => {
-            Swal.fire({
-                title: "User Resister Successfully!",
-                showClass: {
-                    popup: `
+            .then(() => {
+                Swal.fire({
+                    title: "User Resister Successfully!",
+                    showClass: {
+                        popup: `
                 animate__animated
                 animate__fadeInUp
                 animate__faster
               `
-                },
-                hideClass: {
-                    popup: `
+                    },
+                    hideClass: {
+                        popup: `
                 animate__animated
                 animate__fadeOutDown
                 animate__faster
               `
-                }
-            });
-        })
-        .catch(err => console.log(err))
+                    }
+                });
+            })
+            .catch(err => console.log(err))
     }
 
     const navLinks = <>
@@ -49,21 +50,28 @@ const Navbar = () => {
             'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-white font-bold'}>
             Secret
         </NavLink>
+        <NavLink to='/' className={({ isActive }) => isActive ? 'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-[#EEFF25] font-bold' :
+            'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-white font-bold'}>
+            <button className="btn bg-transparent border-none hover:bg-transparent font-bold text-3xl text-white">
+            <BsFillCartCheckFill></BsFillCartCheckFill>
+                <div className="badge badge-secondary -mt-12 font-medium -ml-8 text-[18px]">+0</div>
+            </button>
+        </NavLink>
         <NavLink to='/order/salad' className={({ isActive }) => isActive ? 'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-[#EEFF25] font-bold' :
             'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-white font-bold'}>
-           Order Food
+            Order Food
         </NavLink>
-       {
-        user ? <><div className="avatar">
-        <div className="w-12 mr-3 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-          {user?.photoURL ? <img src={user?.photoURL} alt="photo" /> :<img src={profile} alt="photo" /> }
-        </div>
-      </div> <button onClick={handleLogout} className="btn bg-red-500 text-white text-[18px] hover:text-black ">Logout</button> 
-        </>: <NavLink to='/login' className={({ isActive }) => isActive ? 'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-[#EEFF25] font-bold' :
-        'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-white font-bold'}>
-      Login
-    </NavLink>
-       }
+        {
+            user ? <><div className="avatar">
+                <div className="w-12 mr-3 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                    {user?.photoURL ? <img src={user?.photoURL} alt="photo" /> : <img src={profile} alt="photo" />}
+                </div>
+            </div> <button onClick={handleLogout} className="btn bg-red-500 text-white text-[18px] hover:text-black ">Logout</button>
+            </> : <NavLink to='/login' className={({ isActive }) => isActive ? 'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-[#EEFF25] font-bold' :
+                'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-white font-bold'}>
+                Login
+            </NavLink>
+        }
     </>
     return (
         <div className="navbar fixed z-10 bg-[#15151580] flex justify-between items-center container mx-auto">
