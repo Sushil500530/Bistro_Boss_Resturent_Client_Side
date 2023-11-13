@@ -53,7 +53,7 @@ const Navbar = () => {
             'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-white font-bold'}>
             Secret
         </NavLink>
-        <NavLink to='/' className={({ isActive }) => isActive ? 'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-[#EEFF25] font-bold' :
+        <NavLink to='/dashboard/mycart' className={({ isActive }) => isActive ? 'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-[#EEFF25] font-bold' :
             'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-white font-bold'}>
             <button className="btn bg-transparent border-none hover:bg-transparent font-bold text-3xl text-white">
             <BsFillCartCheckFill></BsFillCartCheckFill>

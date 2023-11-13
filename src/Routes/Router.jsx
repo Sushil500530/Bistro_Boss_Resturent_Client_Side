@@ -9,6 +9,8 @@ import Login from '../pages/login/Login';
 import Resister from '../pages/resister/Resister';
 import PriveteRoute from './PriveteRoute';
 import Secret from '../pages/shared/secret/Secret';
+import Dashboard from '../mainLayout/dashboard/Dashboard';
+import MyCart from '../mainLayout/dashboard/cart/MyCart';
 
 const Router = createBrowserRouter([
     {
@@ -42,6 +44,16 @@ const Router = createBrowserRouter([
     {
         path: '/resister',
         element: <Resister></Resister>
+    },
+    {
+        path: 'dashboard',
+        element: <Dashboard></Dashboard>,
+        children:[
+            {
+                path:'/dashboard/mycart',
+                element:<MyCart></MyCart>
+        }
+    ]
     }
 ])
 
