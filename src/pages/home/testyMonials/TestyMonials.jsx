@@ -14,7 +14,7 @@ const TestyMonials = () => {
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])
-    console.log(reviews);
+    // console.log(reviews);
     return (
         <section className="my-20 lg:px-28 px-10">
             <SectionTitle

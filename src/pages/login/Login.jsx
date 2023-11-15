@@ -6,7 +6,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
 import toast from 'react-hot-toast';
-
+import SocialLogin from '../shared/SocialLogin';
 
 const Login = () => {
     const [disable, setDisable] = useState(true);
@@ -28,39 +28,39 @@ const Login = () => {
 
         loginUser(email, password)
             .then(result => {
-            if(result.user){
-                Swal.fire({
-                    title: "User Resister Successfully!",
-                    showClass: {
-                        popup: `
+                if (result.user) {
+                    Swal.fire({
+                        title: "User Resister Successfully!",
+                        showClass: {
+                            popup: `
                     animate__animated
                     animate__fadeInUp
                     animate__faster
                   `
-                    },
-                    hideClass: {
-                        popup: `
+                        },
+                        hideClass: {
+                            popup: `
                     animate__animated
                     animate__fadeOutDown
                     animate__faster
                   `
-                    }
-                });
-            }
-            return navigate(from, {replace:true});
+                        }
+                    });
+                }
+                return navigate(from, { replace: true });
             })
             .then((error) => {
-               toast.error(`${error.message}`)
+                toast.error(`${error.message}`)
             })
     }
 
     const handleValidateCaptch = (e) => {
         const captchaValue = e.target.value;
         if (validateCaptcha(captchaValue)) {
-           return setDisable(false)
+            return setDisable(false)
         }
         else {
-           return setDisable(true)
+            return setDisable(true)
         }
     }
 
@@ -101,13 +101,14 @@ const Login = () => {
                                 </label>
                                 <input onBlur={handleValidateCaptch} type="text"
                                     name="captcha" placeholder="Type the Captch above" className="input input-bordered" required />
-                                <button  className='btn btn-outline btn-xs mt-3'>Validate</button>
+                                <button className='btn btn-outline btn-xs mt-3'>Validate</button>
                             </div>
                             <div className="form-control mt-6">
                                 <input disabled={disable} className="btn btn-success text-[18px] capitalize " type="submit" value="Login" />
                             </div>
                             <p>haven not yet an Account please <Link to="/resister" className='text-blue-500 underline'>Resister Now</Link></p>
                         </form>
+                      <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>

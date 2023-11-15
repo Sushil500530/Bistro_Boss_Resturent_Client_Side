@@ -5,8 +5,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Resister = () => {
+    const axiosPublic = useAxiosPublic()
     const { createUser,updateUserProfile} = useContext(AuthContext);
     const navigate = useNavigate()
 
@@ -22,7 +24,18 @@ const Resister = () => {
             updateUserProfile(data?.name, data?.photoURL)
             .then(() => {
                 console.log('user profile updated')
-        
+                // create user entry in the database 
+                const userInfo = {
+                    name:data?.name,
+                    email:data?.email
+                }
+                axiosPublic.post('/users', userInfo)
+                .then(res => {
+                    if(res.data.insertedId){
+                        console.log('user added database ---->',res.data);
+                        toast.success("Resister Successfully...!") 
+                    }
+                })
             })
             .catch(err => console.log(err))
            if(result.user){
