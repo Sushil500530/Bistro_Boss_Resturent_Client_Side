@@ -4,7 +4,24 @@ import axios from "axios";
     baseURL:"http://localhost:5000",
 })
 const useAxiosSecure = () => {
-    
+    // request interceptor to add authorization header for every secure call to the api
+    axiosSecure?.interceptors?.request?.use(function(config){
+        const token = localStorage.getItem('access-token')
+        console.log('request stopped by interceptors', token);
+        config.headers.authorization = `Bearer ${token}`;
+        return config;
+    }, function(error){
+        return Promise.reject(error)
+    })
+
+    // interceptor 401 and 403 status
+    axiosSecure?.interceptors?.response?.use(function(response){
+        return response;
+    }, function(error){
+        const status = error?.response?.status;
+        console.log('status error interceptor 401--->', error);
+        return Promise.reject(error)
+    })
     return axiosSecure;
 };
 
