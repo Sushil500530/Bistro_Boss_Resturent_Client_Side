@@ -12,6 +12,8 @@ import Secret from '../pages/shared/secret/Secret';
 import Dashboard from '../mainLayout/dashboard/Dashboard';
 import MyCart from '../mainLayout/dashboard/cart/MyCart';
 import AllUsers from '../mainLayout/dashboard/allUsers/AllUsers';
+import AddItems from '../mainLayout/dashboard/add-items/AddItems';
+import AdminRoute from '../mainLayout/dashboard/AdminRoute';
 
 const Router = createBrowserRouter([
     {
@@ -46,19 +48,26 @@ const Router = createBrowserRouter([
         path: '/resister',
         element: <Resister></Resister>
     },
+
+    // dashboard start
     {
         path: '/dashboard',
         element: <PriveteRoute><Dashboard></Dashboard></PriveteRoute>,
-        children:[
+        children: [
             {
-                path:'/dashboard/mycart',
-                element:<MyCart></MyCart>
-        },
+                path: '/dashboard/mycart',
+                element: <MyCart></MyCart>
+            },
             {
-                path:'/dashboard/all-users',
-                element:<AllUsers></AllUsers>
-        }
-    ]
+                path: '/dashboard/all-users',
+                element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
+            },
+            // admin only
+            {
+                path: '/dashboard/add-items',
+                element: <AdminRoute><AddItems></AddItems></AdminRoute>
+            }
+        ]
     }
 ])
 
