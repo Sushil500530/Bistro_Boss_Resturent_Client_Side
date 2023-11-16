@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import SectionTitle from "../../../pages/home/category/SectionTitle";
 import { useForm } from "react-hook-form";
 import { MdOutlineChangeCircle } from "react-icons/md";
@@ -13,12 +13,15 @@ const UpdateItem = () => {
     const {name,category,recipe,image,price,_id} = useLoaderData();
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
+
+    const navigate = useNavigate();
+
     const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_API_KEY;
     const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 
 
-    const handleUpdateItem = async (_id) => {
+    const handleUpdateItem = async (data) => {
         console.log(data)
         // image upload to imgbb and then get an url 
         const imageFile = { image: data?.image[0] };
@@ -38,17 +41,18 @@ const UpdateItem = () => {
             }
 
             // now set database
-            const menuResponse = await axiosSecure.patch(`/menu/${}`,menuItem);
+            const menuResponse = await axiosSecure.patch(`/menu/${_id}`,menuItem);
             console.log('database response',menuResponse);
-            if(menuResponse.data?.insertedId){
-                reset();
+            if(menuResponse.data?.modifiedCount > 0){
+                // reset();
+                
                 // show success popup
                 Swal.fire({
                     title: "Added Successfully",
                     text: `${data?.name} is updated to the menu.`,
                     icon: "success"
                   });
-
+                  return navigate(-1)
             }
             // console.log('without database',res.data);
 
