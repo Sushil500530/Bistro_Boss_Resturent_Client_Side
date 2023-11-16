@@ -13,7 +13,6 @@ const Login = () => {
     const { loginUser } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || '/'
 
     useEffect(() => {
         loadCaptchaEnginge(6)
@@ -47,7 +46,7 @@ const Login = () => {
                         }
                     });
                 }
-                return navigate(from, { replace: true });
+                return navigate(location?.state ? location.state : "/")
             })
             .then((error) => {
                 toast.error(`${error.message}`)

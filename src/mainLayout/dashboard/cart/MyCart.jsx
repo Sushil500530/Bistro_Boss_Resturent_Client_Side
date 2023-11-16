@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const MyCart = () => {
-    const [carts,refetch] = useCarts();
+    const [carts, refetch] = useCarts();
     const totalPrice = carts.reduce((total, currentItem) => total + currentItem.price, 0);
     const axiosSecure = useAxiosSecure();
 
@@ -26,20 +26,18 @@ const MyCart = () => {
                                 title: "Deleted!",
                                 text: "Your file has been deleted.",
                                 icon: "success",
-                                timer:1000
+                                timer: 1000
                             });
                             refetch();
                         }
                     })
-
-
             }
         });
     }
     return (
         <div>
             <div className="flex justify-evenly mb-5">
-                <h1 className="text-2xl font-bold text-center">Items: {carts.length}</h1>
+                <h1 className="text-2xl font-bold text-center">Items: {carts?.length}</h1>
                 <h1 className="text-2xl font-bold text-center">Total Price: {totalPrice}</h1>
                 <button className="btn">Pay</button>
             </div>
@@ -58,24 +56,24 @@ const MyCart = () => {
                     <tbody>
                         {/* row 1 */}
                         {
-                            carts?.map((item, index) => <tr key={item._id}>
+                            carts?.map((item, index) => <tr key={item?._id}>
                                 <th> {index + 1} </th>
                                 <td>
                                     <div className="flex items-center gap-3">
                                         <div className="avatar">
                                             <div className="mask mask-squircle w-12 h-12">
-                                                <img src={item.image} alt="Avatar Tailwind CSS Component" />
+                                                <img src={item?.image} alt="Avatar Tailwind CSS Component" />
                                             </div>
                                         </div>
 
                                     </div>
                                 </td>
                                 <th>
-                                    {item.name}
+                                    {item?.name}
                                 </th>
-                                <td>$ {item.price}</td>
+                                <td>$ {item?.price}</td>
                                 <th>
-                                    <button onClick={() => handleDelete(item._id)} className="btn bg-red-600 text-2xl text-white hover:text-black "><FaTrashAlt></FaTrashAlt></button>
+                                    <button onClick={() => handleDelete(item?._id)} className="btn bg-red-600 text-2xl text-white hover:text-black "><FaTrashAlt></FaTrashAlt></button>
                                 </th>
                             </tr>)
                         }

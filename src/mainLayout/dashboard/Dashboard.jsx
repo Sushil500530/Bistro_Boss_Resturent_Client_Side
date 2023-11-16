@@ -5,11 +5,13 @@ import { FaAddressBook, FaClipboardList, FaUtensils, } from "react-icons/fa";
 import { MdContactMail, MdList, MdReviews, MdShoppingBag, MdWorkHistory } from "react-icons/md";
 import { AiFillHome, AiFillCalendar } from "react-icons/ai";
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../../hooks/useAdmin";
 
 const Dashboard = () => {
 
     // TODO; get isAdmin value from database 
-    const isAdmin = true;
+    const [isAdmin] = useAdmin();
+    // const isAdmin = true;
 
     return (
         // dashboard sidebade 

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { FcGoogle } from "react-icons/fc"
 import useAxiosPublic from "../../hooks/useAxiosPublic";
@@ -10,6 +10,7 @@ const SocialLogin = () => {
     const { googleSignIn } = useContext(AuthContext)
     const navigate = useNavigate();
     const axiosPublic = useAxiosPublic();
+    const location = useLocation();
 
 
     const handleGoogleSignIn = () => {
@@ -29,7 +30,7 @@ const SocialLogin = () => {
                         .catch(err => console.error(err))
 
                 }
-                return navigate('/');
+                return navigate(location?.state ? location.state : "/")
             })
             .catch(error => console.error(error))
     }
