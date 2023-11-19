@@ -20,16 +20,13 @@ const Navbar = () => {
                         popup: `
                 animate__animated
                 animate__fadeInUp
-                animate__faster
-              `
+                animate__faster`
                     },
                     hideClass: {
                         popup: `
                 animate__animated
                 animate__fadeOutDown
-                animate__faster
-              `
-                    }
+                animate__faster`}
                 });
             })
             .catch(err => console.log(err))
@@ -57,7 +54,7 @@ const Navbar = () => {
             'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-white font-bold'}>
             <button className="btn bg-transparent border-none hover:bg-transparent font-bold text-3xl text-white">
             <BsFillCartCheckFill></BsFillCartCheckFill>
-                <div className="badge badge-secondary -mt-12 font-medium -ml-8 text-[18px]">+{`${carts.length}`}</div>
+                <div className="badge badge-secondary -mt-12 font-medium -ml-8 text-[18px]">+{`${carts?.length}`}</div>
             </button>
         </NavLink>
         <NavLink to='/order/salad' className={({ isActive }) => isActive ? 'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-[#EEFF25] font-bold' :
@@ -88,7 +85,7 @@ const Navbar = () => {
                             {navLinks}
                         </ul>
                     </div>
-                    <h1 className="text-white text-5xl font-bold">Bistro Boss <br /><p className="text-2xl text-ellipsis">Resturent</p></h1>
+                    <h1 className="text-white text-2xl md:text-3xl lg:text-5xl font-bold">Bistro Boss <br /><p className="text-xl text-ellipsis">Resturent</p></h1>
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex">

@@ -53,37 +53,37 @@ const Dashboard = () => {
                     </>
                         : <>
                             <li>
-                                <NavLink to='/dashboard/userHome' className="text-[18px] font-medium">
+                                <NavLink to='userHome' className="text-[18px] font-medium">
                                     <AiFillHome className=" text-2xl"></AiFillHome>
                                     User Home
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to='/dashboard/mycart' className="text-[18px] font-medium">
+                                <NavLink to='mycart' className="text-[18px] font-medium">
                                     <BsFillCartCheckFill className="text-2xl"></BsFillCartCheckFill>
                                     My Cart
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to='/dashboard/payment' className="text-[18px] font-medium">
+                                <NavLink to='payment-history' className="text-[18px] font-medium">
                                     <MdWorkHistory className="text-2xl"></MdWorkHistory>
                                     Payment History
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to='/dashboard/reservation' className="text-[18px] font-medium">
+                                <NavLink to='reservation' className="text-[18px] font-medium">
                                     <AiFillCalendar className="text-2xl"></AiFillCalendar>
                                     Reservation
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to='/dashboard/review' className="text-[18px] font-medium">
+                                <NavLink to='review' className="text-[18px] font-medium">
                                     <MdReviews className="text-2xl"></MdReviews>
                                     Add a Review
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to='/dashboard/booking' className="text-[18px] font-medium">
+                                <NavLink to='booking' className="text-[18px] font-medium">
                                     <FaClipboardList className="text-2xl"></FaClipboardList>
                                     My Booking
                                 </NavLink>

@@ -9,8 +9,8 @@ import Swal from "sweetalert2";
 
 
 const UpdateItem = () => {
-    const { register, handleSubmit, reset } = useForm();
-    const {name,category,recipe,image,price,_id} = useLoaderData();
+    const { register, handleSubmit } = useForm();
+    const {name,category,recipe,price,_id} = useLoaderData();
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
 

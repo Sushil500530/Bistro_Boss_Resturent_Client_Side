@@ -8,7 +8,7 @@ import imgSalad from '../../assets/menu/salad-bg.jpg'
 import useMenu from '../../hooks/useMenu';
 import SectionTitle from '../home/category/SectionTitle';
 import MenuCategory from './manu-Category/MenuCategory';
-const Menu = () => {
+const  Menu = () => {
     const [menu] = useMenu();
     const desserts = menu.filter(item => item.category === 'dessert')
     const soups = menu.filter(item => item.category === 'soup')
