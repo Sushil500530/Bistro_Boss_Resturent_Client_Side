@@ -5,10 +5,12 @@ import { BsFillCartCheckFill } from 'react-icons/bs';
 import profile from '../../assets/others/profile.png'
 import Swal from "sweetalert2";
 import useCarts from "../../hooks/useCarts";
+import useAdmin from "../../hooks/useAdmin";
 
 const Navbar = () => {
     const [carts] = useCarts();
-   
+    const [isAdmin] = useAdmin();
+
     const { user, logoutUser } = useContext(AuthContext);
 
     const handleLogout = () => {
@@ -46,14 +48,26 @@ const Navbar = () => {
             'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-white font-bold'}>
             Our Menu
         </NavLink>
-        <NavLink to='/secret' className={({ isActive }) => isActive ? 'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-[#EEFF25] font-bold' :
-            'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-white font-bold'}>
-            Secret
-        </NavLink>
+        {
+            // user ? 'true' : 'false'    
+            //  user ? condition ? 'double true' : 'one true' : 'false'
+        }
+        {
+            user && isAdmin && <NavLink to='/dashboard/admin-home' className={({ isActive }) => isActive ? 'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-[#EEFF25] font-bold' :
+                'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-white font-bold'}>
+                Secret
+            </NavLink>
+        }
+        {
+            user && !isAdmin && <NavLink to='/dashboard/user-home' className={({ isActive }) => isActive ? 'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-[#EEFF25] font-bold' :
+                'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-white font-bold'}>
+                Secret
+            </NavLink>
+        }
         <NavLink to='/dashboard/mycart' className={({ isActive }) => isActive ? 'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-[#EEFF25] font-bold' :
             'btn bg-transparent border-0 hover:bg-transparent text-[18px] text-white font-bold'}>
             <button className="btn bg-transparent border-none hover:bg-transparent font-bold text-3xl text-white">
-            <BsFillCartCheckFill></BsFillCartCheckFill>
+                <BsFillCartCheckFill></BsFillCartCheckFill>
                 <div className="badge badge-secondary -mt-12 font-medium -ml-8 text-[18px]">+{`${carts?.length}`}</div>
             </button>
         </NavLink>

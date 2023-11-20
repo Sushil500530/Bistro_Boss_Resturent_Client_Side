@@ -5,11 +5,13 @@ import useAxiosSecure from "./useAxiosSecure";
 
 
 const useAdmin = () => {
-    const {user} = useContext(AuthContext);
+    const {user, isLoading} = useContext(AuthContext);
     const axiosSecure = useAxiosSecure();
     const {data:isAdmin, isPending: isAdminLoading} = useQuery({
         queryKey: [user?.email, 'isAdmin'],
+        enabled: !isLoading,
         queryFn: async() => {
+            // console.log('asking and talking token ');
             const res = await axiosSecure.get(`/users/admin/${user?.email}`);
             console.log(res.data);
             return res.data?.admin;

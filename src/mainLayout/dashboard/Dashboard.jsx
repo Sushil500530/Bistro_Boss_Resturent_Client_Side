@@ -6,13 +6,14 @@ import { MdContactMail, MdList, MdReviews, MdShoppingBag, MdWorkHistory } from "
 import { AiFillHome, AiFillCalendar } from "react-icons/ai";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../../hooks/useAdmin";
+import useCarts from "../../hooks/useCarts";
 
 const Dashboard = () => {
-
+    const [carts]= useCarts();
     // TODO; get isAdmin value from database 
     const [isAdmin] = useAdmin();
     // const isAdmin = true;
-
+// console.log(carts);
     return (
         // dashboard sidebade 
         <div className="flex">
@@ -20,7 +21,7 @@ const Dashboard = () => {
                 <ul className="menu pt-8">
                     {isAdmin ? <>
                         <li>
-                            <NavLink to='/dashboard/adminHome' className="text-[18px] font-medium">
+                            <NavLink to='/dashboard/admin-home' className="text-[18px] font-medium">
                                 <AiFillHome className=" text-2xl"></AiFillHome>
                                Admin Home
                             </NavLink>
@@ -53,7 +54,7 @@ const Dashboard = () => {
                     </>
                         : <>
                             <li>
-                                <NavLink to='userHome' className="text-[18px] font-medium">
+                                <NavLink to='user-home' className="text-[18px] font-medium">
                                     <AiFillHome className=" text-2xl"></AiFillHome>
                                     User Home
                                 </NavLink>
@@ -61,7 +62,7 @@ const Dashboard = () => {
                             <li>
                                 <NavLink to='mycart' className="text-[18px] font-medium">
                                     <BsFillCartCheckFill className="text-2xl"></BsFillCartCheckFill>
-                                    My Cart
+                                    My Cart({carts?.length})
                                 </NavLink>
                             </li>
                             <li>
